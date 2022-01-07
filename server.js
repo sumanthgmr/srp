@@ -114,10 +114,10 @@ app.get("/dply", (req,res) => {
     sess = req.session
     var cString='mongodb+srv://sumanthgmr:sumanthgmr@2001@cluster0.yflxb.mongodb.net/srp?retryWrites=true&w=majority';
     var db = mongojs(cString,['data'])
-    var d = {
-        name:sess.name
-    }
-    db.data.find(d, (err,docs) => {
+    // var d = {
+    //     name:sess.name
+    // }
+    db.data.find({}, (err,docs) => {
         res.render("display",{data:docs})
     })
 })
