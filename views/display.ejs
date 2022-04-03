@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>data</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(45deg, #49a09d, #5f2c82);
+      font-family: sans-serif;
+      font-weight: 100;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    table {
+      width: 800px;
+      border-collapse: collapse;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    th,
+    td {
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    th {
+      text-align: left;
+    }
+    thead th {
+      background-color: #55608f;
+    }
+    tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    tbody td {
+      position: relative;
+    }
+    tbody td:hover:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -9999px;
+      bottom: -9999px;
+      background-color: rgba(255, 255, 255, 0.2);
+      z-index: -1;
+    }
+    a{
+      text-decoration: none;
+      color:white;
+    }
+    #searchbar{
+      margin-left: 450px;
+      width: 600px;
+      height: 15px;
+      margin-top: 100px;
+      border-radius: 10%;
+    }
+    </style>
+</head>
+
+<body>
+  <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Search Here">
+	<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th style="color:#03e9f4;">Name</th>
+				<th style="color:#03e9f4;">Gender</th>
+				<th style="color:#03e9f4;">Phone Number</th>
+				<th style="color:#03e9f4;">Name of the product</th>
+				<th style="color:#03e9f4;">Quantity</th>
+        <th style="color:#03e9f4;">Place</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for(var i=0; i < data.length; i++) { %>
+   			<tr id="tab">
+     		<td><%= data[i].nam %></td>
+     		<td><%= data[i].gender %></td>
+     		<td><%= data[i].phone %></td>
+        <td><%= data[i].qualification %></td>
+        <td><%= data[i].age %></td>
+     		<td class="animals"><%= data[i].place %></td>
+   			</tr>
+			<% } %>		
+		</tbody>
+	</table>
+  </div>
+
+  <script>
+    function search_animal() {
+      let input = document.getElementById('searchbar').value
+      input=input.toLowerCase();
+      let x = document.getElementsByClassName('animals');
+        
+      for (i = 0; i < x.length; i++) { 
+          if (!x[i].innerHTML.toLowerCase().includes(input)) {
+              x[i].style.display="none";
+          }
+          else {
+              x[i].style.display="list-item";                 
+          }
+      }
+    }
+  </script>
+</body>
+</html>
